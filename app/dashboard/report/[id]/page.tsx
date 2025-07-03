@@ -15,7 +15,7 @@ import './component/practise.css'
 import { useGetReportQuery } from "../../../Services/userService";
 import { useRouter } from "next/navigation";
 import dynamic from 'next/dynamic';
-import ReactApexChart from "react-apexcharts";
+const ReactApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 
 const spartan = League_Spartan({ subsets: ["latin"] });
