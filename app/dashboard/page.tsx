@@ -25,6 +25,7 @@ import { setisLogin, setToken } from "@/lib/features/profileSlicer";
 import { notify } from "@/utilits/toasts/toast";
 import { useFormikContext } from 'formik';
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3002';
 
 const pageLimit = 7;
 const page = () => {
@@ -72,7 +73,7 @@ const page = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "http://localhost:3002/reports", {
+        `${baseUrl}/reports`, {
         headers: {
           Authorization: token
         }
@@ -130,7 +131,7 @@ const page = () => {
 
   async function handleDelete(id: any) {
     console.log(id)
-    await axios.delete(`http://localhost:3002/player-reports/${id}`, {
+    await axios.delete(`${baseUrl}/player-reports/${id}`, {
       headers: {
         Authorization: token
       }

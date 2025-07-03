@@ -66,6 +66,8 @@ const ImageCard = (props: any) => {
   const profileImage = data.profile ? supabaseBaseUrl + data.profile : '/utilits/img/player1.png';
   console.log('Dashboard profileImage URL:', profileImage);
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3002';
+
   function handleDeleteButton() {
     props.onDelete(data._id);
   }
@@ -78,7 +80,7 @@ const ImageCard = (props: any) => {
   );
   const fetchPlayerReports = async (playerId: string) => {
     try {
-       const response = await axios.get(`http://localhost:3002/player-reports/${playerId}`, {
+       const response = await axios.get(`${baseUrl}/player-reports/${playerId}`, {
         headers: {
           Authorization: token
         }

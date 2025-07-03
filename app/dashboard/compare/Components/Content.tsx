@@ -193,9 +193,11 @@ const Content = () => {
     (state: RootState) => state.profileReducer.token
   );
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3002';
+
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3002/reportsall", {
+      const response = await axios.get(`${baseUrl}/reportsall`, {
         headers: {
           Authorization: token,
         },

@@ -52,9 +52,10 @@ interface reportResponse {
   timing: number;
 }
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3002';
+
 export const api = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl:   
- 'http://localhost:3002', prepareHeaders: (headers, { getState }) => {
+  baseQuery: fetchBaseQuery({ baseUrl: baseUrl, prepareHeaders: (headers, { getState }) => {
   const token = (getState() as RootState).profileReducer.token;
   // If we have a token set in state, let's assume that we should be passing it.
   if (token) {
